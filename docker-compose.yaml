@@ -48,12 +48,15 @@ services:
     container_name: searxng
     image: docker.io/searxng/searxng:latest
     restart: unless-stopped
+    depends_on:
+      - redis
     networks:
       - searxng
     ports:
       - "8080:8080"
     volumes:
       - ./searxng:/etc/searxng:rw
+      - ./docker-init.sh:/docker-entrypoint-initdb.d/init.sh
     environment:
       - SEARXNG_BASE_URL=https://${SEARXNG_HOSTNAME:-localhost}/
       - SEARXNG_BIND_ADDRESS=0.0.0.0
