@@ -3,11 +3,11 @@ use_default_settings: true
 search:
   # sometimes it auto enables, not sure why
   safe_search: 0
-  autocomplete: "duckduckgo"
-  default_lang: "en-US"
+  autocomplete: 'duckduckgo'
+  default_lang: 'en-US'
 server:
   # base_url is defined in the SEARXNG_BASE_URL environment variable, see .env and docker-compose.yml
-  secret_key: "ultrasecretkey"  # changed by docker-init.sh
+  secret_key: 'ultrasecretkey'  # changed by docker-init.sh
   limiter: false
   image_proxy: true
 ui:
