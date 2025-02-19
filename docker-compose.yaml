@@ -51,15 +51,14 @@ services:
     networks:
       - searxng
     ports:
-      - "127.0.0.1:8080:8080"
+      - "8080:8080"
     volumes:
       - ./searxng:/etc/searxng:rw
     environment:
       - SEARXNG_BASE_URL=https://${SEARXNG_HOSTNAME:-localhost}/
+      - SEARXNG_BIND_ADDRESS=0.0.0.0
       - UWSGI_WORKERS=${SEARXNG_UWSGI_WORKERS:-4}
       - UWSGI_THREADS=${SEARXNG_UWSGI_THREADS:-4}
-    cap_drop:
-      - ALL
     cap_add:
       - CHOWN
       - SETGID
@@ -72,6 +71,7 @@ services:
 
 networks:
   searxng:
+
 
 volumes:
   caddy-data:
